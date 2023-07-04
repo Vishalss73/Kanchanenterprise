@@ -1,0 +1,84 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block body%}
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg-1-1.jpg);"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li>/</li>
+                    <li><span>Service Details</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+                <h2>Service Details</h2>
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+
+        <section class="service-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="service-sidebar">
+                            <div class="service-sidebar__links">
+                                <ul>
+                                    <li><a href="#">All Services</a></li>
+                                    <li><a href="#">Agriculture Products</a></li>
+
+                                    <li><a href="#">Organic Products</a></li>
+
+                                    <li><a href="#">Fresh Vegetables</a></li>
+
+                                    <li><a href="#">Dairy Products</a></li>
+                                </ul>
+                            </div><!-- /.service-sidebar__links -->
+                            <div class="service-sidebar__call">
+                                <div class="service-sidebar__call-bg" style="background-image: url(assets/images/services/service-widget-bg-1.jpg);"></div>
+                                <!-- /.service-sidebar__call-bg -->
+                                <h3>We sell best
+                                    agriculture
+                                    products</h3>
+                            </div><!-- /.service-sidebar__call -->
+                        </div><!-- /.service-sidebar -->
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-8 bottom-col">
+                        <img src="assets/images/services/service-d-1-1.jpg" alt="">
+                        <h2>{{service.title}}</h2>
+                        <p>  {{service.discription|safe}}</p>
+                        {% comment %} <ul class="service-details__list list-unstyled">
+                            <li>
+                                <i class="agrikon-icon-right-arrow"></i>
+                                <strong>It has survived not only five centuries.</strong> Lorem Ipsum is simply dummy text of
+                                the new design printng and type setting Ipsum take a look at our round.
+                            </li>
+                            <li>
+                                <i class="agrikon-icon-right-arrow"></i>
+                                <strong>It has survived not only five centuries.</strong> Lorem Ipsum is simply dummy text of
+                                the new design printng and type setting Ipsum take a look at our round.
+                            </li>
+                        </ul><!-- /.service-details__list list-unstyled --> {% endcomment %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="{{service.morebenifitimage.url}}" alt="">
+                            </div><!-- /.col-md-6 -->
+                            <div class="col-md-6">
+                                <h4>More Benefits</h4>
+                                <ul class="list-unstyled service-details__list-2">
+                                    {% for points in service.morebenifit|split:"," %}
+                                    <li>
+                                        <i class="fa fa-check-circle"></i>
+                                        {{points}}
+                                    </li>
+                                    {% endfor%}
+                                </ul><!-- /.list-unstyled -->
+                            </div><!-- /.col-md-6 -->
+                        </div><!-- /.row -->
+                        <br>
+                        <br>
+                        <p>{{service.bottomparagraph|safe}}</p>
+                    </div><!-- /.col-lg-8 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.service-details -->
+
+      {% endblock body%}

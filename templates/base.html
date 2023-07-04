@@ -1,0 +1,292 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>{{header_footer_data.home.title}}</title>
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href=" {% static 'assets/images/favicon/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href=" {% static 'assets/images/favicon/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href=" {% static 'assets/images/favicon/favicon/favicon-favicon-16x16.png'%}">
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+    <meta name="description" content="{{header_footer_data.home.meta_discription}}">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/swiper.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/odometer.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/jarallax.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/agrikon-icons.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/nouislider.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/css/nouislider.pips.css' %}">
+
+    <!-- template styles -->
+    <link rel="stylesheet" href=" {% static 'assets/css/main.css' %}">
+</head>
+
+<body>
+    <div id="loader-container">
+        <div id="loader">
+
+    </div></div>
+
+    <div class="page-wrapper">
+
+        <header class="main-header">
+            <div class="topbar">
+                <div class="container">
+                    <div class="topbar__left">
+                        <div class="topbar__social">
+                            <a href="#" class="fab fa-facebook-square"></a>
+                            <a href="#" class="fab fa-twitter"></a>
+                            <a href="#" class="fab fa-pinterest-p"></a>
+                            <a href="#" class="fab fa-instagram"></a>
+                        </div><!-- /.topbar__social -->
+                        <p>Welcome to kanchan Enterprises</p>
+                    </div><!-- /.topbar__left -->
+                    <div class="topbar__right">
+                        <a href="#"><i class="agrikon-icon-email"></i>info@ecolandmark.com</a>
+                        <a href="#"><i class="agrikon-icon-clock"></i>Mon - Sat 8:00 - 6:30, Sunday - CLOSED</a>
+                    </div><!-- /.topbar__right -->
+                </div><!-- /.container -->
+            </div><!-- /.topbar -->
+            <nav class="main-menu">
+                <div class="container">
+                    <div class="logo-box">
+                       <a href="/" aria-label="logo image"><img src="{{header_footer_data.home.logo.url}}" height="87px" width="150px" alt=""></a>
+                        <span class="fa fa-bars mobile-nav__toggler"></span>
+                    </div><!-- /.logo-box -->
+                    <ul class="main-menu__list">
+                        <li class="dropdown">
+                            <a href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url 'projects' %}">Projects</a>
+                            <ul>
+                                <!-- <li><a href="{% url 'projects' %}">Projects</a></li> -->
+                                <li><a href="{% url 'recent-projects' %}">On going Projects</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url 'service' %}">Services</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url 'attractive-location' %}">Attractive locations</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url 'farmer-certificate-details' %}">Farmer certificate</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- /.main-menu__list -->
+
+                    
+                </div><!-- /.container -->
+            </nav>
+            <!-- /.main-menu -->
+        </header><!-- /.main-header -->
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+{%block body%}        
+
+{% endblock body %} 
+
+
+       
+<footer class="site-footer">
+    <img src="{%static 'assets/images/icons/footer-bg-icon-1.png'%}" class="site-footer__shape-1" alt="">
+    <img src="{%static 'assets/images/icons/footer-bg-icon-2.png'%}" class="site-footer__shape-2" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                <div class="footer-widget">
+                   
+                        <!-- <img src="{%static 'assets/images/kk.png" width="153" alt=""> --> <h3 class="footer-widget__title">{{header_footer_data.home.title}}</h3>
+             
+                    <p> {{header_footer_data.home.about}}
+                    </p>
+                    <form action="#" data-url="YOUR_MAILCHIMP_URL" class="mc-form">
+                        <input type="email" name="EMAIL" placeholder="Email Address">
+                        <button type="submit"><i class="agrikon-icon-right-arrow"></i></button>
+                    </form><!-- /.mc-form -->
+                    <div class="mc-form__response"></div><!-- /.mc-form__response -->
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/farmercertificates" class="fab fa-facebook-square"></a>
+                        <a href="https://www.youtube.com/channel/UCAd8xbeWFxcUn_cc2tKZQ9Q/videos" class="fab fa-youtube"></a>
+                        <a href="https://twitter.com/realityeco" class="fab fa-twitter"></a>
+                        <a href="https://www.instagram.com/farmercertificate_/?__coig_restricted=1" class="fab fa-instagram"></a>
+                    </div><!-- /.topbar__social -->
+                </div><!-- /.footer-widget -->
+            </div><!-- /.col-sm-12 col-md-6 col-lg-4 -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-2">
+                <div class="footer-widget footer-widget__links-widget">
+                    <h3 class="footer-widget__title">Our Services</h3><!-- /.footer-widget__title -->
+                    <ul class="list-unstyled footer-widget__links">
+                        {% for service in header_footer_data.service%}
+                        <li><a href="/service/{{service.slug}}">{{service.title}}</a></li>
+                        {% endfor%}
+                    </ul><!-- /.list-unstyled -->
+                </div><!-- /.footer-widget -->
+            </div><!-- /.col-sm-12 col-md-6 col-lg-2 -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-widget">
+                    <h3 class="footer-widget__title">News</h3><!-- /.footer-widget__title -->
+                    <ul class="list-unstyled footer-widget__post">
+                        {% for allposts in header_footer_data.post %}
+                        <li>
+                            <img src="{{allposts.image.url}}" alt={{allposts.image.imagealt}}>
+                            <div class="footer-widget__post-content">
+                                <span>{{allposts.created_on}}</span>
+                                <h4><a href="{{allposts.slug}}">{{allposts.title}}</a></h4>
+                            </div><!-- /.footer-widget__post-content -->
+                        </li>
+                        {%endfor%}
+                    </ul><!-- /.list-unstyled footer-widget__post -->
+                </div><!-- /.footer-widget -->
+            </div><!-- /.col-sm-12 col-md-6 col-lg-3 -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <h3 class="footer-widget__title">Contact</h3><!-- /.footer-widget__title -->
+                <ul class="list-unstyled footer-widget__contact">
+                    <li>
+                        <i class="agrikon-icon-telephone"></i>
+                        <a href="tel:992-244-4444">992 244 4444</a>
+                    </li>
+                     <li>
+                        <i class="agrikon-icon-telephone"></i>
+                        <a href="tel:969-822-9229">969 822 9229</a>
+                    </li>
+                    <li>
+                        <i class="agrikon-icon-email"></i>
+                        <a href="mailto:info@ecolandmark.com">info@ecolandmark.com</a>
+                    </li>
+                    <li>
+                        <i class="agrikon-icon-pin"></i>
+                        <a href="#">Eco Landmark Reality, Off no. 5, building No 6, Daulat Housing Society, Opp. Jain Mandir, Beside McDonald�s Karve Road, Kothurd, Pune : 411038.</a>
+                    </li>
+                </ul><!-- /.list-unstyled -->
+            </div><!-- /.col-sm-12 col-md-6 col-lg-3 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer><!-- /.site-footer -->
+<!--   <span class="razorpay-payment-button svelte-ohbfj8"><a href="https://razorpay.com/payment-button/pl_HD8ack68bHsnyH/view/?utm_source=payment_button&amp;utm_medium=button&amp;utm_campaign=payment_button" type="submit" class="PaymentButton PaymentButton--dark PaymentButton--rzpTheme PaymentButton--rzp-dark-standard svelte-ekc7fv"><svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svelte-ekc7fv"><path d="M7.077 6.476l-.988 3.569 5.65-3.589-3.695 13.54 3.752.004 5.457-20L7.077 6.476z" fill="#fff" class="svelte-ekc7fv"></path><path d="M1.455 14.308L0 20h7.202L10.149 8.42l-8.694 5.887z" fill="#fff" class="svelte-ekc7fv"></path></svg> <div class="PaymentButton-contents svelte-ekc7fv"><span class="PaymentButton-text svelte-ekc7fv">Pay Now</span> <div class="PaymentButton-securedBy svelte-ekc7fv">Secured by Razorpay</div></div></a></span> -->
+<div class="bottom-footer">
+    <div class="container">
+        <p>{{header_footer_data.home.copyright|safe}}</p>
+        <div class="bottom-footer__links">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Sitemap</a>
+        </div><!-- /.bottom-footer__links -->
+    </div><!-- /.container -->
+</div><!-- /.bottom-footer -->
+
+</div><!-- /.page-wrapper -->
+
+
+<div class="mobile-nav__wrapper">
+<div class="mobile-nav__overlay mobile-nav__toggler"></div>
+<!-- /.mobile-nav__overlay -->
+<div class="mobile-nav__content">
+    <span class="mobile-nav__close mobile-nav__toggler"><i class="far fa-times"></i></span>
+
+    <div class="logo-box">
+        <a href="index.html" aria-label="logo image"><img src="{%static 'assets/images/kk.png" width="155'%}" alt="" /></a>
+    </div>
+    <!-- /.logo-box -->
+    <div class="mobile-nav__container"></div>
+    <!-- /.mobile-nav__container -->
+
+    <ul class="mobile-nav__contact list-unstyled">
+        <li>
+            <i class="agrikon-icon-email"></i>
+            <a href="mailto:info@ecolandmark.com">info@ecolandmark.com</a>
+        </li>
+        <li>
+            <i class="agrikon-icon-telephone"></i>
+            <a href="tel:992-244-4444">992 244 4444</a>
+        </li>
+        
+    </ul><!-- /.mobile-nav__contact -->
+    <div class="mobile-nav__top">
+        <div class="mobile-nav__language">
+            <img src="{%static 'assets/images/resources/flag-1-1.jpg'%}" alt="">
+            <label class="sr-only" for="language-select">select language</label>
+            <!-- /#language-select.sr-only -->
+            <select class="selectpicker" id="language-select">
+                <option value="english">English</option>
+                <option value="arabic">Arabic</option>
+            </select>
+        </div><!-- /.mobile-nav__language -->
+        <div class="mobile-nav__social">
+            <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
+            <a href="#" aria-label="pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+        </div><!-- /.mobile-nav__social -->
+    </div><!-- /.mobile-nav__top -->
+
+
+
+</div>
+<!-- /.mobile-nav__content -->
+</div>
+<!-- /.mobile-nav__wrapper -->
+
+<div class="search-popup">
+<div class="search-popup__overlay search-toggler"></div>
+<!-- /.search-popup__overlay -->
+<div class="search-popup__content">
+    <form action="#">
+        <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+        <input type="text" id="search" placeholder="Search Here..." />
+        <button type="submit" aria-label="search submit" class="thm-btn">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+</div>
+<!-- /.search-popup__content -->
+</div>
+<!-- /.search-popup -->
+
+<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+<script src="{%static 'assets/js/jquery-3.5.1.min.js'%} "></script>
+<script src="{%static 'assets/js/bootstrap.bundle.min.js'%} "></script>
+<script src="{%static 'assets/js/swiper.min.js'%} "></script>
+<script src="{%static 'assets/js/jquery.ajaxchimp.min.js'%} "></script>
+<script src="{%static 'assets/js/jquery.magnific-popup.min.js'%} "></script>
+<script src="{%static 'assets/js/jquery.validate.min.js'%} "></script>
+<script src="{%static 'assets/js/bootstrap-select.min.js'%} "></script>
+<script src="{%static 'assets/js/wow.js'%} "></script>
+<script src="{%static 'assets/js/odometer.min.js'%} "></script>
+<script src="{%static 'assets/js/jquery.appear.min.js'%} "></script>
+<script src="{%static 'assets/js/jarallax.min.js'%} "></script>
+<script src="{%static 'assets/js/circle-progress.min.js'%} "></script>
+<script src="{%static 'assets/js/wNumb.min.js'%} "></script>
+<script src="{%static 'assets/js/nouislider.min.js'%} "></script>
+
+<!-- template js -->
+<script src="{%static 'assets/js/theme.js'%} "></script>
+</body>
+</html>

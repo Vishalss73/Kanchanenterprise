@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block body%}
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url({%static 'assets/images/services/ag.jpg' %});"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li>/</li>
+                    <li><span>attractive locations</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+                <h2>attractive locations</h2>
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+        <section class="project-details">
+            {% for allattractive in attractiondata%}
+            <div class="container">
+                <div class="bottom-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3>{{allattractive.title}}</h3>
+    
+                            <p>{{allattractive.paragraph|safe}}</p>
+                           
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            <div class="project-details__images">
+                                <img src="{{allattractive.image.url}}" class="img-fluid" alt="">
+                            
+                            </div><!-- /.project-details__images -->
+                        </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.bottom-content -->
+            </div><!-- /.container -->
+       {% endfor%}
+
+
+       </section><!-- /.project-details -->   
+         {% endblock body%}

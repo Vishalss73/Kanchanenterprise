@@ -1,0 +1,171 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block body%}
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg-1-1.jpg'%});"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li>/</li>
+                    <li><span>News Details</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+                <h2>News Details</h2>
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+
+        <section class="blog-details">
+            <div class="container">
+                <div class="row">
+                    {%for single in singlepost%}
+   
+                    <div class="col-lg-8">
+                        <div class="blog-details__image">
+                            {%if single.image %}
+                            <img src="{{single.image.url}}" class="img-fluid" alt="{{single.image.imagealt}}">
+                            {% endif %}
+                        </div><!-- /.blog-details__image -->
+                        <div class="blog-card__content">
+                            <div class="blog-card__date">{{single.created_on|date:"d M"}}</div><!-- /.blog-card__date -->
+                            <div class="blog-card__meta">
+                                <a href="blog-details.html"><i class="far fa-user-circle"></i> {{single.author}}</a>
+                                <a href="blog-details.html"><i class="far fa-comments"></i> 2 Comments</a>
+                            </div><!-- /.blog-card__meta -->
+                            <h3><a href="{{single.slug}}">{{single.title}}</a></h3>
+                        </div><!-- /.blog-card__content -->
+                        <div class="blog-details__content">
+                            <p>   {{single.post_description|safe}} </p>
+                        </div><!-- /.blog-details__content -->
+
+                        <div class="blog-details__meta">
+                            <div class="blog-details__tags">
+                                <span>Tags:</span>
+                                {%for tag in single.tag.all%}
+                                <a class="tag" href="#" rel="tag">{{tag.name}}</a>
+                         {%endfor%}
+                            </div><!-- /.blog-details__tags -->
+                            <div class="blog-details__social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div><!-- /.blog-details__social -->
+                        </div><!-- /.blog-details__meta -->
+
+                        <div class="blog-author">
+                            <div class="blog-author__image">
+                                <img src="assets/images/blog/blog-author-1-1.jpg" alt="">
+                            </div><!-- /.blog-author__image -->
+                            <div class="blog-author__content">
+                                <h3>{{single.author.first_name}} {{single.author.last_name}}</h3>
+                                <p>It has survived not only five centuries, but also the leap into electronic typesetting,
+                                    remaining unchanged. It was popularised in the sheets containing.</p>
+                            </div><!-- /.blog-author__content -->
+                        </div><!-- /.blog-author -->
+
+                        <div class="blog-comment">
+                            <h2>2 Comments</h2>
+            {% for allcomments in comments%}
+                            <div class="blog-comment__box">
+                                <div class="blog-comment__image">
+                                    <img src="{{allcomments.}}" alt="">
+                                </div><!-- /.blog-comment__image -->
+                                <div class="blog-comment__content">
+                                    <div class="d-flex flex-row justify-content-between">
+                                    <h3>{{allcomments.name}}</h3>
+                                    <a href="#" class="thm-btn">Reply</a><!-- /.thm-btn -->
+                                    </div>
+                                    <p>{{allcomments.body}}</p>
+                                </div><!-- /.blog-comment__content -->
+                            </div><!-- /.blog-comment__box -->
+                            {%endfor%}
+                        </div><!-- /.blog-comment -->
+                        <div class="comment-form">
+                            <h2>Leave a Comments</h2>
+
+                            <form action=/{{ single.slug }} class="contact-one__form contact-form-validated" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    {% if messages %}
+                                    <ul class="messages">
+                                        {% for message in messages %}
+                                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                    <div class="col-lg-6">
+                                        <input type="text" name="name" placeholder="Full Name">
+                                    </div><!-- /.col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <input type="text" name="email" placeholder="Email Address">
+                                    </div><!-- /.col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <input type="text" name="phone" placeholder="Phone Number">
+                                    </div><!-- /.col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <input type="text" name="subject" placeholder="Subject">
+                                    </div><!-- /.col-lg-6 -->
+                                    <div class="col-lg-12">
+                                        <textarea name="body" placeholder="Write Message"></textarea>
+                                    </div><!-- /.col-lg-12 -->
+                                    <div class="col-lg-12">
+                                       <button type="submit" class="thm-btn">Submit Comment</button><!-- /.thm-btn -->
+                                    </div><!-- /.col-lg-12 -->
+                                </div><!-- /.row -->
+                            </form>
+                        </div><!-- /.comment-form -->
+                    </div><!-- /.col-lg-8 -->
+                    {%endfor%}
+                    <div class="col-lg-4">
+                        <div class="blog-sidebar">
+                            <div class="blog-sidebar__search">
+                                <form action="search/" method="get">
+                                    <input type="text" name="query" placeholder="Search">
+                                    <button type="submit"><i class="agrikon-icon-magnifying-glass"></i></button>
+                                </form>
+                            </div><!-- /.blog-sidebar__search -->
+                            <div class="blog-sidebar__posts">
+                                <h3>Recent Posts</h3>
+                                <ul>
+                                   {% for allpopularpost in popularpost%}
+                                    <li>
+                                        <img src="{{allpopularpost.image.url}}" width="50px" height="50px" alt="{{allpopularpost.imagealt}}">
+                                        <span><i class="far fa-comments"></i> 2 Comments
+                                        </span>
+                                        <h4><a href={{allpopularpost.slug}}>{{allpopularpost.title}}</a></h4>
+                                    </li>
+                                    {% endfor%}
+                                </ul>
+                            </div><!-- /.blog-sidebar__posts -->
+                            <div class="blog-sidebar__categories">
+                                <h3>Catgories</h3>
+                                <ul>
+                                    {% for allcategory in category%}
+                                    <li>
+                                        <a href="{{allcategory.category_slug}}"><i class="agrikon-icon-right-arrow"></i>{{allcategory.category_title}}
+                                        </a>
+                                    </li>
+                                    {%endfor%}
+                                </ul>
+                            </div><!-- /.blog-sidebar__categories -->
+                            <div class="blog-sidebar__tags">
+                                <h3>Tags</h3>
+                                <div class="blog-sidebar__tags-links">
+                                    <a href="#">Agriculture,</a>
+                                    <a href="#">Food,</a>
+                                    <a href="#">Healthy,</a>
+                                    <a href="#">Dairy,</a>
+                                    <a href="#">Organic,</a>
+                                    <a href="#">Farm,</a>
+                                    <a href="#">Economy</a>
+                                </div><!-- /.blog-sidebar__tags-links -->
+                            </div><!-- /.blog-sidebar__tags -->
+                        </div><!-- /.blog-sidebar -->
+                    </div><!-- /.col-lg-4 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.blog-details -->
+
+
+
+        {% endblock body%}

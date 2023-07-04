@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <section class="page-header">
+        <div class="page-header__bg" style="background-image: url({% static 'assets/images/services/ag.jpg' %});"></div>
+        <!-- /.page-header__bg -->
+        <div class="container">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="/">Home</a></li>
+                <li>/</li>
+                <li><span>Search</span></li>
+            </ul><!-- /.thm-breadcrumb list-unstyled -->
+            <h2>Search</h2>
+        </div><!-- /.container -->
+    </section><!-- /.page-header -->
+
+    <section class="blog-grid">
+        <div class="container">
+            <div class="row">
+                {% if messages %}
+                <div class="messages col-md-12 text-center">
+                    {% for message in messages %}
+                        <p class="{{ message.tags }}">{% if message.tags %} {% endif %} {{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+                {% for allposts in posts%}
+                <div class="col-md-6 col-lg-4">
+                    <div class="blog-card">
+                        <div class="blog-card__image">
+                            {% if allposts.image%}
+                            <img src="{{allposts.image.url}}" height="250px" alt="best way to do eco Agriculture">
+                           {% endif%}
+                        </div><!-- /.blog-card__image -->
+                        <div class="blog-card__content">
+                            <!-- /.blog-card__date -->
+                            <a href="/{{allposts.slug}}" ><h3>{{allposts.title}}</h3> </a>
+                        </div>
+                    </div><!-- /.blog-card -->
+                </div><!-- /.col-md-6 col-lg-4 -->
+                {%endfor%}
+                <!-- Modify the rest of the code for the other blog cards similarly -->
+                <!-- Replace the image URLs and href links with your desired values -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.blog-grid -->
+{% endblock body %}

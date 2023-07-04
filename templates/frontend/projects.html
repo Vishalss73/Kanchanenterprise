@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body%}
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url({% static 'assets/images/services/ag.jpg'%});"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li>/</li>
+                    <li><span>Projects</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+                <h2>Projects</h2>
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+        <div class="projects-one">
+            <div class="container">
+                <div class="row">
+                    {% for allprojects in Projects%}
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="projects-one__single">
+                            <img src="{{allprojects.projectimage.url}}" alt="">
+                            <div class="projects-one__content">
+                                <h3>{{allprojects.title}}</h3>
+                                <a href="project/{{allprojects.slug}}" class="projects-one__button"><i class="agrikon-icon-right-arrow"></i></a><!-- /.projects-one__button -->
+                            </div><!-- /.projects-one__content -->
+                        </div><!-- /.projects-one__single -->
+                    </div>
+                    {%  endfor %}
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.projects-one -->
+
+{% endblock body%}

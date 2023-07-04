@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block body%}
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url({% static 'assets/images/services/ag.jpg' %});"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li>/</li>
+                    <li><span>Services</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+                <h2>Our Services</h2>
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+        <section class="service-two service-two__service-page">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="service-two__card">
+                            <div class="service-two__card-image">
+                                <img src="{% static 'assets/images/far.jpg' %}" alt="">
+                            </div><!-- /.service-two__card-image -->
+                            <div class="service-two__card-content">
+                                <div class="service-two__card-icon">
+                                    <i class="agrikon-icon-tractor"></i>
+                                </div><!-- /.service-two__card-icon -->
+                                <h3><a href="/farmer-certificate-details">Farmer Certificate</a></h3>
+                                <!-- <p>Lorem ium dolor sit ametad pisicing elit sed simply do ut.</p> -->
+                            </div><!-- /.service-two__card-content -->
+                        </div><!-- /.service-two__card -->
+                    </div><!-- /.col-sm-12 col-md-6 col-lg-3 -->
+                    {% for allservices in services%}
+                
+                    <div class="col-sm-12 col-md-6 col-lg-3 pb-4">
+                        <div class="service-two__card">
+                            <div class="service-two__card-image">
+                                {% if allservices.image%}
+                                <img src="{{allservices.image.url}}" alt="" height="230px">
+                                {% endif%}
+                            </div><!-- /.service-two__card-image -->
+                            <div class="service-two__card-content">
+                                <div class="service-two__card-icon">
+                                    <i class="{{allservices.icon}}"></i>
+                                </div><!-- /.service-two__card-icon -->
+                                <h3><a href="service/{{allservices.slug}}">{{allservices.title}}</a></h3>
+                                
+                            </div><!-- /.service-two__card-content -->
+                        </div><!-- /.service-two__card -->
+                    </div><!-- /.col-sm-12 col-md-6 col-lg-3 -->
+                    {% endfor%}
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.service-two -->
+
+      
+
+        <section class="call-to-action__two jarallax" data-jarallax data-speed="0.3" data-imgPosition="50% 50%">
+            <img class="call-to-action__two__bg jarallax-img" src="{% static 'assets/images/backgrounds/cta-2-bg-1.jpg' %}" alt="parallax-image" />
+            <div class="container">
+                <h3>Agriculture Matters to
+                    the Future</h3>
+                <a href="{% url 'about' %}" class="thm-btn">Discover More</a><!-- /.thm-btn -->
+            </div><!-- /.container -->
+        </section><!-- /.call-to-action__two -->
+        {% endblock body%}

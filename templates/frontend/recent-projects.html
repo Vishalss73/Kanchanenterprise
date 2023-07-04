@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <section class="page-header">
+        <div class="page-header__bg" style="background-image: url({% static 'assets/images/services/ag.jpg' %});"></div>
+        <!-- /.page-header__bg -->
+        <div class="container">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="/">Home</a></li>
+                <li>/</li>
+                <li><span>project details</span></li>
+            </ul><!-- /.thm-breadcrumb list-unstyled -->
+            <h2>recent projects</h2>
+        </div><!-- /.container -->
+    </section><!-- /.page-header -->
+
+    <section class="blog-grid">
+        <div class="container">
+            <div class="row">
+                {% for count in Ongoingprojects%}
+                <div class="col-md-6 col-lg-4">
+                    <div class="blog-card">
+                        <div class="blog-card__image">
+                            {% if count.image%}
+                            <img src="{{count.image.url}}" height="250px" alt="best way to do eco Agriculture">
+                           {% endif%}
+                        </div><!-- /.blog-card__image -->
+                        <div class="blog-card__content">
+                            <!-- /.blog-card__date -->
+                            <div class="blog-card__meta">
+                                <a href="blog-details.html"><i class="far fa-user-circle"></i>Project No {{count.id}}:</a>
+                            </div><!-- /.blog-card__meta -->
+                            <h3>Village Name: {{count.village_name}} Tal: {{count.tall}} Dist.: {{count.dist}}</h3>
+                            <p>{{count.projectdetails}}</p>
+                            <p>{{count.pricedetails}}</p>
+                        </div>
+                    </div><!-- /.blog-card -->
+                </div><!-- /.col-md-6 col-lg-4 -->
+                {%endfor%}
+                <!-- Modify the rest of the code for the other blog cards similarly -->
+                <!-- Replace the image URLs and href links with your desired values -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.blog-grid -->
+{% endblock body %}

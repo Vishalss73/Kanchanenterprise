@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block body%}
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url({%static 'assets/images/services/ag.jpg' %});"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li>/</li>
+                    <li><span>Project Details</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+                <h2>Project Details</h2>
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+{% for allpd in projectdata %}
+        <section class="project-details">
+            <div class="container">
+                <img src="{{allpd.projectimage.url}}" class="img-fluid" alt="">
+                <ul class="list-unstyled project-details__list">
+                    <li>
+                        <span>Date:
+                        </span>
+                        {{allpd.projectstartdate}}
+                    </li>
+                    <li>
+                        <span>Client:
+                        </span>
+                        {{allpd.clientnamme}}
+                    </li>
+                    <li>
+                        <span>Category:
+                        </span>
+                        {{allpd.category_id}}
+                    </li>
+                    <li>
+                        <span>Service:
+                        </span>
+                        {{allpd.Service_publisher_id}}
+                    </li>
+                </ul><!-- /.list-unstyled project-details__list -->
+                <h2>{{allpd.title}}</h2>
+                <p>
+                    {{allpd.discription|safe}}
+                </p>
+                <div class="bottom-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3>{{allpd.heading}}</h3>
+                            <p>{{allpd.headingdiscription|safe}}</p>
+                            <ul class="list-unstyled project-details__check-list">
+                                <li>
+                                    <i class="fa fa-check-circle"></i>
+                                    Take a look at our round up of the best shows
+                                </li>
+                                <li>
+                                    <i class="fa fa-check-circle"></i>
+                                    It has survived not only five centuries
+                                </li>
+                                <li>
+                                    <i class="fa fa-check-circle"></i>
+                                    Lorem Ipsum has been the ndustry standard dummy text
+                                </li>
+                            </ul><!-- /.list-unstyled -->
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            <div class="project-details__images">
+                                {% if allpd.smallfirstimg%}
+                                <img src="{{allpd.smallfirstimg.url}}" alt="">
+                                {% endif %}
+                                {% if allpd.smallsecondimg%}
+                                <img src="{{allpd.smallsecondimg.url}}" alt="">
+                                {% endif %}
+                            </div><!-- /.project-details__images -->
+                        </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.bottom-content -->
+            </div><!-- /.container -->
+        </section><!-- /.project-details -->
+{% endfor %}
+        <div class="projects-one project-page">
+            <div class="container">
+                <hr />
+                <div class="block-title text-center">
+                    <div class="block-title__image"></div><!-- /.block-title__image -->
+                    <p>Closed projects</p>
+                    <h3>Latest Projects List</h3>
+                </div><!-- /.block-title -->
+                <div class="row">
+                    {% for allprojects in Projects%}
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="projects-one__single">
+                            <img src="{{allprojects.projectimage.url}}" alt="">
+                            <div class="projects-one__content">
+                                <h3>{{allprojects.title}}</h3>
+                                <a href="project/{{allprojects.projectimage.url}}" class="projects-one__button"><i class="agrikon-icon-right-arrow"></i></a><!-- /.projects-one__button -->
+                            </div><!-- /.projects-one__content -->
+                        </div><!-- /.projects-one__single -->
+                    </div>
+{% endfor%}
+
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.projects-one -->
+
+        {%endblock body%}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({{about.backgroundimage.url}});"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>/</li>
+            <li><span>About</span></li>
+        </ul><!-- /.thm-breadcrumb list-unstyled -->
+        <h2>{{about.Topheading}}</h2>
+    </div><!-- /.container -->
+</section><!-- /.page-header -->
+
+<section class="service-one service-one__about">
+    <div class="container">
+        <h1 class="text-center pb-4"> Our Services </h1>
+        <div class="row">
+            {% for allservices in services%}
+            {% if forloop.counter < 4 %}
+            <div class="col-md-12 col-lg-4">
+                <div class="service-one__box">
+                    <img src="{{allservices.image.url}}" alt="" height="240px">
+                    <div class="service-one__box-content">
+                        <h3><a href="/service/{{allservices.slug}}">{{allservices.title}}</a></h3>
+                    </div><!-- /.service-one__box-content -->
+                </div><!-- /.service-one__box -->
+            </div>
+            {% endif %}
+           {%endfor %}
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.service-one -->
+
+<section class="about-three">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-three__image">
+                    <img src="{{about.image.url}}" alt="">
+                </div><!-- /.about-three__image -->
+            </div><!-- /.col-lg-6 -->
+            <div class="col-lg-6">
+                <div class="about-three__content">
+                    <div class="block-title">
+                        <!-- /.block-title__image -->
+                        <p>{{about.smallheading}}</p>
+                        <h3>{{about.title}}</h3>
+                    </div><!-- /.block-title -->
+                    <!-- /.about-three__list list-unstyled -->
+                    <div class="about-three__summery">
+                        <p>{{about.discription|safe}}</p>
+                        <!-- <p>Here, residents and visitors can access state-of-the-art amenities while enjoying the tranquility of wide-open expanses and a scenic natural waterfront. To top it off, Lake View Valley enjoys a pleasant climate throughout the year giving one the chance to enjoy its beauty all year round.</p> -->
+                    </div><!-- /.about-three__summery -->
+
+                </div><!-- /.about-three__content -->
+            </div><!-- /.col-lg-6 -->
+        </div>
+      
+        <!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.about-three -->
+
+{% endblock body %}
